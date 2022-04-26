@@ -2,7 +2,7 @@ steps:
 - task: AzureImageBuilder.devOps-task-for-azure-image-builder.custom-build-release-task.AzureImageBuilderTask@1
   displayName: 'Azure VM Image Builder Task'
   inputs:
-    managedIdentity: '/subscriptions/0000-0000-000-0000-00000000/resourceGroups/AIB_Managed_Identity/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-aib-poc'
+    managedIdentity: '/subscriptions/86f78685-6d6b-46f9-8c67-b80970f7bc45/resourceGroups/DevOps/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aibIdentity20220406'
     imageSource: marketplace
     baseImage: 'MicrosoftWindowsDesktop:Windows-10:19h1-evd'
     baseImagePubOfferSku: 'MicrosoftWindowsDesktop:windows-10:20h2-evd '
@@ -10,11 +10,11 @@ steps:
     windowsUpdateProvisioner: true
     packagePath: '$(System.DefaultWorkingDirectory)/_WVD_POC/WVD'
     inlineScript: '''& set-executionpolicy remotesigned -scope Process -Force; c:\BuildArtifacts\WVD\win10.ps1'''
-    storageAccountName: aibstagstor1594899547
+    storageAccountName: newstgacct20220406
     distributeType: sig
     galleryImageId: '/subscriptions/0000-0000-000-0000-00000000/resourceGroups/aib/providers/Microsoft.Compute/galleries/SIGmvp/images/win10images'
     replicationRegions: 'westeurope,northeurope'
-    ibSubscription: 'ALVENTECH (0000-0000-000-0000-00000000)'
-    ibAzureResourceGroup: aib-poc-rg
+    ibSubscription: '86f78685-6d6b-46f9-8c67-b80970f7bc45'
+    ibAzureResourceGroup: devOps
     ibLocation: westeurope
     vmSize: 'Standard_D2s_v3'
