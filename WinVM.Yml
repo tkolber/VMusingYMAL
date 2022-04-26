@@ -12,7 +12,7 @@ steps:
     inlineScript: '''& set-executionpolicy remotesigned -scope Process -Force; c:\BuildArtifacts\WVD\win10.ps1'''
     storageAccountName: newstgacct20220406
     distributeType: sig
-    galleryImageId: '/subscriptions/0000-0000-000-0000-00000000/resourceGroups/aib/providers/Microsoft.Compute/galleries/SIGmvp/images/win10images'
+    galleryImageId: '/subscriptions/86f78685-6d6b-46f9-8c67-b80970f7bc45/resourceGroups/DevOps/providers/Microsoft.Compute/galleries/DevOpsSIGname/images/win10avd'
     replicationRegions: 'westeurope,northeurope'
     ibSubscription: '86f78685-6d6b-46f9-8c67-b80970f7bc45'
     ibAzureResourceGroup: devOps
