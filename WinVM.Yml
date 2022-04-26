@@ -1,3 +1,5 @@
+    steps:
+      - 
     - task: PowerShell@0
       displayName: Export RSG details to CSV
       inputs:
