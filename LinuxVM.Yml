@@ -1,0 +1,14 @@
+steps:
+- task: AzureImageBuilder.devOps-task-for-azure-image-builder.custom-build-release-task.AzureImageBuilderTask@1
+  displayName: 'Azure VM Image Builder Task'
+  inputs:
+    managedIdentity: '/subscriptions/faa41ac1-d312-47d5-933a-e63295c15b98/resourcegroups/LinuxImageBuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/linuxibIdentity'
+    imageSource: marketplace
+    storageAccountName: linuximagestgt
+    distributeType: sig
+    galleryImageId: '/subscriptions/faa41ac1-d312-47d5-933a-e63295c15b98/resourceGroups/LinuxImageBuilder/providers/Microsoft.Compute/galleries/LinuxImageBuilderSig/images/LinuxImages'
+    replicationRegions: westeurope
+    ibSubscription: 'nvproj (faa41ac1-d312-47d5-933a-e63295c15b98)'
+    ibAzureResourceGroup: LinuxImageBuilder
+    ibLocation: westeurope
+    vmSize: 'Standard_D2as_v5'
