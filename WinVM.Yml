@@ -1,20 +1,8 @@
-steps:
-- task: AzureImageBuilder.devOps-task-for-azure-image-builder.custom-build-release-task.AzureImageBuilderTask@1
-  displayName: 'Azure VM Image Builder Task'
-  inputs:
-    managedIdentity: '/subscriptions/86f78685-6d6b-46f9-8c67-b80970f7bc45/resourceGroups/DevOps/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aibIdentity20220406'
-    imageSource: marketplace
-    baseImage: 'MicrosoftWindowsDesktop:Windows-10:19h1-evd'
-    baseImagePubOfferSku: 'MicrosoftWindowsDesktop:windows-10:20h2-evd '
-    provisioner: powershell
-    windowsUpdateProvisioner: true
-    packagePath: '$(System.DefaultWorkingDirectory)/_WVD_POC/WVD'
-    inlineScript: '''& set-executionpolicy remotesigned -scope Process -Force; c:\BuildArtifacts\WVD\win10.ps1'''
-    storageAccountName: newstgacct20220406
-    distributeType: sig
-    galleryImageId: '/subscriptions/86f78685-6d6b-46f9-8c67-b80970f7bc45/resourceGroups/DevOps/providers/Microsoft.Compute/galleries/DevOpsSIGname/images/win10avd'
-    replicationRegions: 'westeurope,northeurope'
-    ibSubscription: '86f78685-6d6b-46f9-8c67-b80970f7bc45'
-    ibAzureResourceGroup: devOps
-    ibLocation: westeurope
-    vmSize: 'Standard_D2s_v3'
+    - task: PowerShell@0
+      displayName: Export RSG details to CSV
+      inputs:
+        workingDirectory: ${{ parameters.workingDirectory }}
+        targetType: 'inline'
+        script: |
+            $resourceGroupList = Get-AzResourceGroup | select-Object -Property ResourceGroupName,Location,ResourceId,ProvisioningState,@{N='Enviroment (Tag)'; E={$_.Tags.Enviroment}} ,@{N='Ownership (Tag)'; E={$_.Tags.Ownership}} 
+            $resourceGroupList | export-csv test.csv -NoTypeInformation
