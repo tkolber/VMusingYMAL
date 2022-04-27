@@ -4,6 +4,5 @@ steps:
         displayName: Export RSG details to CSV
             $resourceGroupList = Get-AzResourceGroup | select-Object -Property ResourceGroupName,Location,ResourceId,ProvisioningState,@{N='Enviroment (Tag)'; E={$_.Tags.Enviroment}} ,@{N='Ownership (Tag)'; E={$_.Tags.Ownership}} 
             $resourceGroupList | export-csv test11.csv -NoTypeInformation
-      - script:      
             Write-Host -ForegroundColor Magenta "Export to CSV done"
-            echo "Export Completed"
+      - script: echo "Export Completed"
