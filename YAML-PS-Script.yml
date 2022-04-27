@@ -5,4 +5,4 @@ steps:
     ScriptType: 'FilePath'
     ScriptPath: "$(System.DefaultWorkingDirectory)/NET1.13.ps1"
     azurePowerShellVersion: 'LatestVersion'
-    workingDirectory: '$(Build.SourcesDirectory)/projectFolderName'
+    workingDirectory: '$(Build.SourcesDirectory)/YamlPipe'
