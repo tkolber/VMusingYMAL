@@ -9,3 +9,5 @@ steps:
     inlineScript: |
       az --version
       az account show
+  env:
+     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
