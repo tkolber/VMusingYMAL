@@ -3,5 +3,5 @@ steps:
   inputs:
     azureSubscription: 'Visual Studio Enterprise Subscription(86f78685-6d6b-46f9-8c67-b80970f7bc45)'
     ScriptType: 'FilePath'
-    ScriptPath: 'C:\Azure\NET1.13.ps1'
+    ScriptPath: $(System.DefaultWorkingDirectory)/_BakeAppIntoImage/webApp
     azurePowerShellVersion: 'LatestVersion'
