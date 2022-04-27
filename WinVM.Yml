@@ -1,6 +1,6 @@
     steps:
       - 
-    - task: PowerShell@0
+    - task: PowerShell
       displayName: Export RSG details to CSV
       inputs:
         workingDirectory: ${{ parameters.workingDirectory }}
