@@ -1,11 +1,9 @@
-trigger: none
-steps: 
-- task: PowerShell@2
+steps:
+- task: AzurePowerShell@5
   inputs:
-    targetType: 'inline'
-    script: |
-            $resourceGroupList = Get-AzResourceGroup | select-Object -Property ResourceGroupName,Location,ResourceId,ProvisioningState,@{N='Enviroment (Tag)'; E={$_.Tags.Enviroment}} ,@{N='Ownership (Tag)'; E={$_.Tags.Ownership}} 
-            $resourceGroupList | export-csv test11.csv -NoTypeInformation
-            Write-Host -ForegroundColor Magenta "Export to CSV done"
-  env:
-     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    azureSubscription: 'Visual Studio Enterprise Subscription(86f78685-6d6b-46f9-8c67-b80970f7bc45)'
+    ScriptType: 'InlineScript'
+    Inline: |
+      $resourceGroupList = Get-AzResourceGroup | select-Object -Property ResourceGroupName,Location,ResourceId,ProvisioningState,@{N='Enviroment (Tag)'; E={$_.Tags.Enviroment}} ,@{N='Ownership (Tag)'; E={$_.Tags.Ownership}} 
+                  $resourceGroupList | export-csv test11.csv -NoTypeInformation
+                  Write-Host -ForegroundColor Magenta "Export to CSV done"
