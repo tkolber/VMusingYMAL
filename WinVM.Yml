@@ -5,6 +5,4 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      $resourceGroupList = Get-AzResourceGroup | select-Object -Property ResourceGroupName,Location,ResourceId,ProvisioningState,@{N='Enviroment (Tag)'; E={$_.Tags.Enviroment}} ,@{N='Ownership (Tag)'; E={$_.Tags.Ownership}} 
-                  $resourceGroupList | export-csv test11.csv -NoTypeInformation
-                  Write-Host -ForegroundColor Magenta "Export to CSV done"
+              az vm list --query "[].{resource:resourceGroup, name:name}" -o table
