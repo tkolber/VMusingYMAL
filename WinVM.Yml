@@ -1,3 +1,5 @@
+trigger: none
+steps: 
 - task: AzureCLI@2
   displayName: Azure CLI
   inputs:
