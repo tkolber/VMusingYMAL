@@ -1,0 +1,10 @@
+steps: 
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise Subscription(86f78685-6d6b-46f9-8c67-b80970f7bc45)'
+    ScriptType: 'InlineScript'
+    Inline: |
+      $resourceGroupList = Get-AzResourceGroup | select-Object -Property ResourceGroupName,Location,ResourceId,ProvisioningState
+      $resourceGroupList | export-csv test11.csv -NoTypeInformation
+      Write-Host -ForegroundColor Magenta "Export to CSV done"
+    azurePowerShellVersion: 'LatestVersion'
