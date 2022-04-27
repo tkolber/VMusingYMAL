@@ -5,7 +5,6 @@ steps:
     ScriptType: 'InlineScript'
     Inline:
       $resourceGroupList = Get-AzResourceGroup | select-Object -Property ResourceGroupName,Location,ResourceId,ProvisioningState,@{N='Enviroment (Tag)'; E={$_.Tags.Enviroment}} ,@{N='Ownership (Tag)'; E={$_.Tags.Ownership}} 
-      #$resourceGroupList | export-csv test11.csv -NoTypeInformation
-      $resourceGroupList
+      $resourceGroupList 
       Write-Host -ForegroundColor Magenta "Export to CSV done"
     azurePowerShellVersion: 'LatestVersion'
