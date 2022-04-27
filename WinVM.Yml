@@ -1,13 +1,11 @@
 trigger: none
 steps: 
-- task: AzureCLI@2
-  displayName: Azure CLI
+- task: PowerShell@2
   inputs:
-    azureSubscription: 86f78685-6d6b-46f9-8c67-b80970f7bc45
-    scriptType: ps
-    scriptLocation: inlineScript
-    inlineScript: |
-      az --version
-      az account show
+    targetType: 'inline'
+    script: |
+            $resourceGroupList = Get-AzResourceGroup | select-Object -Property ResourceGroupName,Location,ResourceId,ProvisioningState,@{N='Enviroment (Tag)'; E={$_.Tags.Enviroment}} ,@{N='Ownership (Tag)'; E={$_.Tags.Ownership}} 
+            $resourceGroupList | export-csv test11.csv -NoTypeInformation
+            Write-Host -ForegroundColor Magenta "Export to CSV done"
   env:
      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
