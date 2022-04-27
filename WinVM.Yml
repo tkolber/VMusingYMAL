@@ -1,6 +1,9 @@
-steps:
-  - pwsh: |
-              $resourceGroupList = Get-AzResourceGroup | select-Object -Property ResourceGroupName,Location,ResourceId,ProvisioningState,@{N='Enviroment (Tag)'; E={$_.Tags.Enviroment}} ,@{N='Ownership (Tag)'; E={$_.Tags.Ownership}} 
-              $resourceGroupList | export-csv test11.csv -NoTypeInformation
-              Write-Host -ForegroundColor Magenta "Export to CSV done"
-  - script: echo "Export Completed"
+- task: AzureCLI@2
+  displayName: Azure CLI
+  inputs:
+    azureSubscription: <Name of the Azure Resource Manager service connection>
+    scriptType: ps
+    scriptLocation: inlineScript
+    inlineScript: |
+      az --version
+      az account show
