@@ -1,6 +1,6 @@
 steps: 
 - task: PowerShell@2
-  displayName: detect any terraform change in the plan
+ # displayName: detect any terraform change in the plan
   inputs:
       targetType: 'inline'
       script: |
