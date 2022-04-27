@@ -1,10 +1,7 @@
-    steps:
-      - 
-    - task: PowerShell
-      displayName: Export RSG details to CSV
-      inputs:
-        workingDirectory: ${{ parameters.workingDirectory }}
-        targetType: 'inline'
+trigger: none    
+steps:
+      - pwsh: |
+        displayName: Export RSG details to CSV
         script: |
             $resourceGroupList = Get-AzResourceGroup | select-Object -Property ResourceGroupName,Location,ResourceId,ProvisioningState,@{N='Enviroment (Tag)'; E={$_.Tags.Enviroment}} ,@{N='Ownership (Tag)'; E={$_.Tags.Ownership}} 
             $resourceGroupList | export-csv test.csv -NoTypeInformation
