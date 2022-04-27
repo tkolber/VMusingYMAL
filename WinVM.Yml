@@ -1,7 +1,7 @@
 steps:
 - task: AzurePowerShell@5
   inputs:
-    azureSubscription: $(AzureConnection)
+    azureSubscription: 86f78685-6d6b-46f9-8c67-b80970f7bc45
     ScriptType: 'InlineScript'
     Inline: |
             $resourceGroupList = Get-AzResourceGroup | select-Object -Property ResourceGroupName,Location,ResourceId,ProvisioningState,@{N='Enviroment (Tag)'; E={$_.Tags.Enviroment}} ,@{N='Ownership (Tag)'; E={$_.Tags.Ownership}} 
