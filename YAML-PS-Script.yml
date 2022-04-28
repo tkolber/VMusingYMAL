@@ -3,5 +3,5 @@ steps:
   inputs:
     azureSubscription: 'Visual Studio Enterprise Subscription(86f78685-6d6b-46f9-8c67-b80970f7bc45)'
     targetType: 'filePath'
-    filePath: '$(System.DefaultWorkingDirectory)\simple.ps1'
+    filePath: 'simple.ps1'
     azurePowerShellVersion: 'LatestVersion'
