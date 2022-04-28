@@ -2,6 +2,6 @@ steps:
 - task: AzurePowerShell@5
   inputs:
     azureSubscription: 'Visual Studio Enterprise Subscription(86f78685-6d6b-46f9-8c67-b80970f7bc45)'
-    ScriptType: 'FilePath'
+    ScriptType: 'pscore'
     ScriptPath: "net113.ps1"
     azurePowerShellVersion: 'LatestVersion'
