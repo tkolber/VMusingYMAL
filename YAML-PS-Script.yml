@@ -3,6 +3,6 @@ steps:
   inputs:
     azureSubscription: 'Visual Studio Enterprise Subscription(86f78685-6d6b-46f9-8c67-b80970f7bc45)'
     scriptType: filePath
-    scriptPath: $(Build.SourcesDirectory)\simple.ps1
+    scriptPath: simple.ps1
     azurePowerShellVersion: latestVersion
     pwsh: true
