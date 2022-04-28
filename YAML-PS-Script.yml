@@ -5,13 +5,3 @@ steps:
     ScriptType: 'FilePath'
     ScriptPath: '$(System.DefaultWorkingDirectory)/net1.13.ps1'
     azurePowerShellVersion: 'LatestVersion'
-
-- task: AzurePowerShell@5
-  inputs:
-    azureSubscription: 'Visual Studio Enterprise Subscription(86f78685-6d6b-46f9-8c67-b80970f7bc45)'
-    ScriptType: 'InlineScript'
-    Inline: |
-    get-childitem
-    dir
-    Write-Host -ForegroundColor Magenta "Export to CSV done"
-    azurePowerShellVersion: 'LatestVersion'
