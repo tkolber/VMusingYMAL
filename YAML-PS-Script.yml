@@ -12,6 +12,6 @@ steps:
     ScriptType: 'InlineScript'
     Inline: |
     get-childitem
-    ls
+    dir
     Write-Host -ForegroundColor Magenta "Export to CSV done"
     azurePowerShellVersion: 'LatestVersion'
