@@ -4,37 +4,11 @@ steps:
   inputs:
     managedIdentity: '/subscriptions/faa41ac1-d312-47d5-933a-e63295c15b98/resourcegroups/LinuxImageBuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/linuxibIdentity'
     baseImagePubOfferSku: 'Canonical:0001-com-ubuntu-server-focal:20_04-lts'
-    packagePath: '$(System.DefaultWorkingDirectory)/infra/conf/ubsrv20/'
+    packagePath: '$(System.DefaultWorkingDirectory)/Custome/'
     inlineScript: |
-      sudo mkdir /lib/buildArtifacts
-      sudo apt-get update
-      sudo apt-get install -y wget apt-transport-https ca-certificates curl software-properties-common
-      wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
-      sudo dpkg -i packages-microsoft-prod.deb
-      sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-      curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
-      echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-      echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-      sudo apt-get update
-      sudo apt-get install -y powershell kubectl helm dotnet-sdk-6.0 moby-engine moby-cli moby-containerd docker-compose
-      sudo apt-get install -y wget apt-transport-https software-properties-common
-      wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
-      sudo dpkg -i packages-microsoft-prod.deb
-      sudo apt-get update
-      sudo apt-get install -y powershell
-      sudo curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-      sudo apt-get update
-      sudo snap install helm --classic
-      wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-      sudo dpkg -i packages-microsoft-prod.deb
-      rm packages-microsoft-prod.deb
-      sudo apt-get update; \
-      sudo apt-get install -y apt-transport-https && \
-      sudo apt-get update && \
-      sudo apt-get install -y dotnet-sdk-6.0
-      sudo apt-get install -y aspnetcore-runtime-6.0
-      sudo apt-get install moby-engine moby-cli moby-containerd docker-compose -y
-      sudo cloud-init clean --logs --seed
+      sudo chmod +x "/tmp/Tools.sh"
+      echo "running script"
+      sudo . "/tmp/Tools.sh"
     storageAccountName: linuximagestgt
     distributeType: sig
     galleryImageId: '/subscriptions/faa41ac1-d312-47d5-933a-e63295c15b98/resourceGroups/LinuxImageBuilder/providers/Microsoft.Compute/galleries/LinuxImageBuilderSig/images/LinuxImages'
