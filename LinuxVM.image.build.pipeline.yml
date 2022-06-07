@@ -2,18 +2,18 @@ steps:
 - task: AzureImageBuilder.devOps-task-for-azure-image-builder-canary.custom-build-release-task.AzureImageBuilderTask@1
   displayName: 'Azure Linux VM Image Builder Task UbuntuServer 20_04-lts'
   inputs:
-    managedIdentity: '/subscriptions/faa41ac1-d312-47d5-933a-e63295c15b98/resourcegroups/LinuxImageBuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/linuxibIdentity'
+    managedIdentity: '/subscriptions/86f78685-6d6b-46f9-8c67-b80970f7bc45/resourceGroups/LinuxImageBuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/linuxibIdentity'
     baseImagePubOfferSku: 'Canonical:0001-com-ubuntu-server-focal:20_04-lts'
     packagePath: '$(System.DefaultWorkingDirectory)/Custome/'
     inlineScript: |
+      sudo mkdir "/msft"
       sudo chmod +x "/tmp/Tools.sh"
-      echo "running script"
       sudo . "/tmp/Tools.sh"
-    storageAccountName: linuximagestgt
+    storageAccountName: linuximagestg
     distributeType: sig
-    galleryImageId: '/subscriptions/faa41ac1-d312-47d5-933a-e63295c15b98/resourceGroups/LinuxImageBuilder/providers/Microsoft.Compute/galleries/LinuxImageBuilderSig/images/LinuxImages'
+    galleryImageId: '/subscriptions/86f78685-6d6b-46f9-8c67-b80970f7bc45/resourceGroups/LinuxImageBuilder/providers/Microsoft.Compute/galleries/LinuxImageBuilderSig/images/LinuxImages'
     replicationRegions: westeurope
-    ibSubscription: 'nvproj (faa41ac1-d312-47d5-933a-e63295c15b98)'
+    ibSubscription: 'LinuxSVC'
     ibAzureResourceGroup: LinuxImageBuilder
     ibLocation: westeurope
     vmSize: 'Standard_DS2_v2'
