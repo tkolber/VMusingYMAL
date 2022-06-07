@@ -1,10 +1,11 @@
+trigger: none
 steps:
 - task: AzureImageBuilder.devOps-task-for-azure-image-builder-canary.custom-build-release-task.AzureImageBuilderTask@1
   displayName: 'Azure Linux VM Image Builder Task UbuntuServer 20_04-lts'
   inputs:
     managedIdentity: '/subscriptions/86f78685-6d6b-46f9-8c67-b80970f7bc45/resourceGroups/LinuxImageBuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/linuxibIdentity'
     baseImagePubOfferSku: 'Canonical:0001-com-ubuntu-server-focal:20_04-lts'
-    packagePath: '$(System.DefaultWorkingDirectory)/Custome/'
+    packagePath: '$(System.DefaultWorkingDirectory)/_tkolber_YMALExamples/'
     inlineScript: |
       sudo mkdir "/msft"
       sudo chmod +x "/tmp/Tools.sh"
