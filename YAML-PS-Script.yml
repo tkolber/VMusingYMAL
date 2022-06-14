@@ -4,6 +4,6 @@ steps:
   inputs:
     azureSubscription: 'Visual Studio Enterprise Subscription(86f78685-6d6b-46f9-8c67-b80970f7bc45)'
     scriptType: filePath
-    scriptPath: sim.ps1
+    scriptPath: "$(System.DefaultWorkingDirectory)/sim.ps1"
     azurePowerShellVersion: latestVersion
     pwsh: true
